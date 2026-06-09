@@ -4,9 +4,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5;
+    [SerializeField]
+    private float acceleration = 0.1f;
 
     float horizontalInput;
-    public float horizontalMultiplayer = 2;
+    public float horizontalMultiplier = 2;
 
     [Header("Editor References")]
     public Rigidbody playerRb; 
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        speed += acceleration * Time.fixedDeltaTime;
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime;
         playerRb.MovePosition(playerRb.position + forwardMove + horizontalMove); 

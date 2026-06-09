@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
-    public float speedX;
-    public float speedY;
-    public float speedZ;
+    private Vector3 lastPosition = Vector3.zero;
+    [SerializeField]
+    private float radius = 1.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,12 +16,16 @@ public class Rotator : MonoBehaviour
     void Update()
     {
         RotateObject();
+        lastPosition = transform.position; 
     }
 
     void RotateObject()
     {
-        transform.Rotate(Vector3.right * speedX * Time.deltaTime);
-        transform.Rotate(Vector3.up * speedY * Time.deltaTime);
-        transform.Rotate(Vector3.forward * speedZ * Time.deltaTime);
+        float circumference = Mathf.PI * radius;
+        Vector3 displacement = transform.position - lastPosition;
+        Vector3 rotationDelta = displacement * (180 / circumference);
+        transform.Rotate(new Vector3(rotationDelta.z, 0, 0));
+        Debug.Log(displacement);
+        Debug.Log(transform.position);
     }
 }

@@ -1,15 +1,20 @@
+
 using UnityEngine;
+using System.Collections;
 
 public class GroundSpawn : MonoBehaviour
 {
-    public GameObject groundTile;
+    [SerializeField]
+    private GameObject[] groundTiles;
     Vector3 nextSpawnPoint;
 
 
     public void SpawnTile()
     {
-        GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
-        nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+        int index = Random.Range(0, groundTiles.Length); 
+        GameObject template = groundTiles[index];
+        GameObject tile = Instantiate(template, nextSpawnPoint, Quaternion.identity);
+        nextSpawnPoint = tile.transform.GetChild(1).transform.position;
     }
 
     void Start()
