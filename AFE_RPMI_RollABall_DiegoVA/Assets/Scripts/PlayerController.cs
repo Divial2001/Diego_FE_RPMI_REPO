@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    bool alive = true;
+
     public float speed = 5;
     [SerializeField]
     private float acceleration = 0.1f;
@@ -18,9 +21,6 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 6;
     public bool isGrounded = true;
 
-    [Header("Respawn System")]
-    public float fallLimit = -10;
-    public Transform respawnPoint;
 
     [Header("Sound Configuration")]
     public AudioClip[] soundCollection;
@@ -33,14 +33,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        if (transform.position.y <= fallLimit)
-        {
-            Respawn();
-        }
+      
     }
 
     private void FixedUpdate()
     {
+        if (!alive) return;
+
         speed += acceleration * Time.fixedDeltaTime;
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime;
@@ -57,7 +56,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Respawn();
+            Die();
         }
     }
 
@@ -69,16 +68,18 @@ public class PlayerController : MonoBehaviour
         PlaySFX(0);
     }
 
-    void Respawn()
-    {
-        transform.position = respawnPoint.position;
-        playerRb.linearVelocity = new Vector3(0,0,0);
-        PlaySFX(2);
-    }
+    
 
     public void PlaySFX(int soundToPlay)
     {
         playerAudio.PlayOneShot(soundCollection[soundToPlay]);
+    }
+
+    public void Die()
+    {
+        alive = false;
+
+        SceneManager.LoadScene(("MainMenu"));
     }
 
     #region Input Methods
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    
 
 
     #endregion
