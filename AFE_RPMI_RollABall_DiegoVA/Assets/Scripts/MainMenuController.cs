@@ -4,8 +4,13 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public void StartGame()
-{
-    SceneManager.LoadScene(1);
-}
+    {
+        GameManager.Instance.StartGame();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
 

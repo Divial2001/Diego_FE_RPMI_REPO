@@ -60,8 +60,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     void Jump()
     {
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -69,7 +67,6 @@ public class PlayerController : MonoBehaviour
     }
 
     
-
     public void PlaySFX(int soundToPlay)
     {
         playerAudio.PlayOneShot(soundCollection[soundToPlay]);
@@ -78,8 +75,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         alive = false;
-
-        SceneManager.LoadScene(("MainMenu"));
+        GameManager.Instance.EndGame();
     }
 
     #region Input Methods
