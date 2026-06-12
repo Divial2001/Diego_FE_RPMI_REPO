@@ -224,6 +224,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4692642885201211749, guid: 164af01b4f71ba442b171b23f5b7379c, type: 3}
+      propertyPath: m_Center.x
+      value: -1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692642885201211749, guid: 164af01b4f71ba442b171b23f5b7379c, type: 3}
+      propertyPath: m_Center.y
+      value: 0.33883268
+      objectReference: {fileID: 0}
     - target: {fileID: 4743848876025658019, guid: 164af01b4f71ba442b171b23f5b7379c, type: 3}
       propertyPath: m_TagString
       value: Ground

@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 5920305472417749662}
   - component: {fileID: 8156596956006303248}
   - component: {fileID: 7148082787932611676}
+  - component: {fileID: 5097120663621261859}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -181,8 +182,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!114 &7148082787932611676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,3 +246,23 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5097120663621261859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749555588361959565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeaccdadfc45e6b4d8f892e8fd85a139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  acceleration: 0.5
+  horizontalMultiplier: 0.75
+  playerRb: {fileID: 8156596956006303248}
+  playerAudio: {fileID: 0}
+  jumpForce: 6
+  isGrounded: 1
+  soundCollection: []

@@ -352,6 +352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadSegment
       objectReference: {fileID: 0}
+    - target: {fileID: 8912357730444027443, guid: 164af01b4f71ba442b171b23f5b7379c, type: 3}
+      propertyPath: m_Center.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
